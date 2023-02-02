@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Board
-comment1.params=rowToAdd\ color
+comment1.params=colToAdd\ color
 comment1.target=boolean\ addPiece(int,\ java.lang.String)
 comment2.params=
 comment2.target=void\ printBoard()

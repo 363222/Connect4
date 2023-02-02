@@ -6,16 +6,16 @@ public class Board
 
     Piece [][]ourBoard = new Piece[rows][columns];
 
-    public boolean addPiece(int rowToAdd, String color) {
+    public boolean addPiece(int colToAdd, String color) {
         // within normal range 
-        if(rowToAdd >= 0 && rowToAdd < rows) {
+        if(colToAdd >= 0 && colToAdd < rows) {
             // we can add
-            if(ourBoard[rowToAdd][0] == null) {
+            if(ourBoard[colToAdd][0] == null) {
                 boolean addedThePiece = false;
-                for(int col = columns -1; col >= 0; col--) { 
-                    if(ourBoard[rowToAdd][col] == null) {
-                        ourBoard[rowToAdd][col] = new Piece();
-                        ourBoard[rowToAdd][col].setColor(color);
+                for(int row = rows -1; row >= 0; row--) { 
+                    if(ourBoard[row][colToAdd] == null) {
+                        ourBoard[row][colToAdd] = new Piece();
+                        ourBoard[row][colToAdd].setColor(color);
                         addedThePiece = true; 
                         break;
                     }
@@ -23,17 +23,19 @@ public class Board
                 return addedThePiece;
             } else {
                 //that row is full
-                System.err.println("This row is full, please choose another.");
+                System.err.println("This colums is full, please choose another.");
                 return false;
             }
         } else {
-            //outsude normal range
+            //outside normal range
             System.err.println("You are trying to add somewhere that is not supported.");
             return false;
         }
     }
 
     public void printBoard() {
+        for(int col = 0; col < columns + 2; col++) System.out.print("-");
+        System.out.println();
         for (int row = 0; row < rows; row++) {
             System.out.print("|");
             for(int col = 0; col < columns; col++) {
@@ -46,6 +48,8 @@ public class Board
             }
             System.out.println();
         }
+        for(int col = 0; col < columns + 2; col++) System.out.print("-");
+        System.out.println();
     }
 
     public Board() {
